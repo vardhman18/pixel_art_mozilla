@@ -90,7 +90,7 @@ const SubmissionForm = () => {
       // Create a form and submit it to the Google Apps Script URL
       const form = document.createElement('form')
       form.method = 'POST'
-      form.action = 'https://script.google.com/a/macros/juetguna.in/s/AKfycbw7q03qlFIGDX8oi8iyEGNA7XNY6c2yPrqILfGbGc_G5tGR1IqCeEWTq3m57UI7x2NM/exec'
+      form.action = 'https://script.google.com/a/macros/juetguna.in/s/AKfycbwN0BB60kwDkx8ugRW_rvTnQh9M_bmsdr0s5eGBh2ZklEjicLJq7QbupgI136TGAJg/exec'
       form.target = '_blank'
       
       const input = document.createElement('input')

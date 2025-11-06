@@ -8,8 +8,7 @@ Steps:
 3. Deploy > New deployment > Select 'Web app', set access to 'Anyone', deploy, and copy the Web App URL.
 4. Paste that URL into the frontend 'Google Apps Script URL' input.
 */
-
-const SHEET_ID = 'PASTE_YOUR_SHEET_ID_HERE'; // replace with your sheet id
+const SHEET_ID = 'YOUR_ACTUAL_SHEET_ID_HERE'; // replace with your actual sheet id
 const SHEET_NAME = 'Submissions';
 
 function doGet(e){
