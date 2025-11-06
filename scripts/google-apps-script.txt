@@ -1,0 +1,63 @@
+/*
+Sample Google Apps Script web app to receive POSTed JSON and append rows to a Google Sheet.
+Deploy as a web app (Execute as: Me, Who has access: Anyone, even anonymous) and paste the resulting URL into the frontend.
+
+Steps:
+1. Create a new Google Sheet and note its ID from the URL.
+2. In Extensions > Apps Script, paste this code and replace SHEET_ID.
+3. Deploy > New deployment > Select 'Web app', set access to 'Anyone', deploy, and copy the Web App URL.
+4. Paste that URL into the frontend 'Google Apps Script URL' input.
+*/
+
+const SHEET_ID = 'PASTE_YOUR_SHEET_ID_HERE'; // replace with your sheet id
+const SHEET_NAME = 'Submissions';
+
+function doGet(e){
+  return ContentService.createTextOutput('OK')
+}
+
+function doPost(e){
+  try{
+    const ss = SpreadsheetApp.openById(SHEET_ID)
+    let sheet = ss.getSheetByName(SHEET_NAME)
+    if(!sheet) {
+      sheet = ss.insertSheet(SHEET_NAME)
+      // Add headers
+      sheet.appendRow(['Timestamp', 'Team Name', 'Captain Mobile', 'Enrollment 1', 'Enrollment 2', 'Enrollment 3', 'Artwork Title', 'Category', 'File Name'])
+    }
+
+    const data = JSON.parse(e.postData.contents)
+    const timestamp = new Date().toISOString()
+
+    // Append team submission row
+    sheet.appendRow([
+      timestamp, 
+      data.teamName || '', 
+      data.captainMobile || '', 
+      data.enrollment1 || '', 
+      data.enrollment2 || '', 
+      data.enrollment3 || '', 
+      data.title || '', 
+      data.category || '', 
+      data.fileName || ''
+    ])
+
+    // If there is an image (dataURL), save it to Drive in a folder named after the sheet
+    if(data.fileData){
+      const matches = data.fileData.match(/^data:(image\/(png|jpeg|gif));base64,(.*)$/)
+      if(matches){
+        const contentType = matches[1]
+        const base64 = matches[3]
+        const blob = Utilities.newBlob(Utilities.base64Decode(base64), contentType, data.fileName || ('upload_' + Date.now()))
+        const folderName = 'PixelArt_Submissions_' + SHEET_ID
+        let folders = DriveApp.getFoldersByName(folderName)
+        let folder = folders.hasNext() ? folders.next() : DriveApp.createFolder(folderName)
+        folder.createFile(blob)
+      }
+    }
+
+    return ContentService.createTextOutput(JSON.stringify({status:'ok'})).setMimeType(ContentService.MimeType.JSON)
+  } catch(err){
+    return ContentService.createTextOutput(JSON.stringify({status:'error', message:err.message})).setMimeType(ContentService.MimeType.JSON).setHeader('Cache-Control','no-cache')
+  }
+}
