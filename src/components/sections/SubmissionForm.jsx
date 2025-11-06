@@ -10,7 +10,6 @@ const SubmissionForm = () => {
   const [category, setCategory] = useState('Transformers')
   const [fileDataUrl, setFileDataUrl] = useState(null)
   const [fileName, setFileName] = useState('')
-  const [appsScriptUrl, setAppsScriptUrl] = useState('')
   const [status, setStatus] = useState(null)
   const [isDragOver, setIsDragOver] = useState(false)
   const fileRef = useRef(null)
@@ -74,6 +73,7 @@ const SubmissionForm = () => {
     }
 
     setStatus('Submitting...')
+
     const payload = {
       teamName,
       enrollment1,
@@ -85,32 +85,40 @@ const SubmissionForm = () => {
       fileName,
       fileData: fileDataUrl
     }
+
     try {
-      if (!appsScriptUrl) {
-        setStatus('No Google Apps Script URL provided. Download available locally.')
-        return
-      }
-      const res = await fetch(appsScriptUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      })
-      if (res.ok) {
-        setStatus('✅ Submitted! Your team entry was recorded.')
+      // Create a form and submit it to the Google Apps Script URL
+      const form = document.createElement('form')
+      form.method = 'POST'
+      form.action = 'https://script.google.com/a/macros/juetguna.in/s/AKfycbw7q03qlFIGDX8oi8iyEGNA7XNY6c2yPrqILfGbGc_G5tGR1IqCeEWTq3m57UI7x2NM/exec'
+      form.target = '_blank'
+      
+      const input = document.createElement('input')
+      input.type = 'hidden'
+      input.name = 'data'
+      input.value = JSON.stringify(payload)
+      
+      form.appendChild(input)
+      document.body.appendChild(form)
+      form.submit()
+      document.body.removeChild(form)
+
+      setStatus('✅ Submitted! Your team entry is being recorded. Please check the opened tab for confirmation.')
+      
+      // Clear form after a short delay
+      setTimeout(() => {
         setTeamName('')
         setEnrollment1('')
         setEnrollment2('')
         setEnrollment3('')
         setCaptainMobile('')
         setTitle('')
-        setFileDataUrl(null)
-        setFileName('')
-      } else {
-        const text = await res.text()
-        setStatus('Failed: ' + res.status + ' ' + text)
-      }
-    } catch (err) {
-      setStatus('Error: ' + err.message)
+        setCategory('Transformers')
+      }, 1000)
+      
+    } catch (error) {
+      setStatus('❌ Error: ' + error.message + '. Please try again or download your file for safekeeping.')
+      console.error('Submission error:', error)
     }
   }
 
@@ -183,7 +191,7 @@ const SubmissionForm = () => {
                 value={enrollment1}
                 onChange={(e) => setEnrollment1(e.target.value)}
                 className="input-field"
-                placeholder="2021001234"
+                placeholder="241b000"
               />
             </div>
             <div className="input-group">
@@ -193,7 +201,7 @@ const SubmissionForm = () => {
                 value={enrollment2}
                 onChange={(e) => setEnrollment2(e.target.value)}
                 className="input-field"
-                placeholder="2021001235"
+                placeholder="231b000"
               />
             </div>
             <div className="input-group">
@@ -255,7 +263,7 @@ const SubmissionForm = () => {
                 <div className="w-32 h-32 mx-auto rounded-xl flex items-center justify-center p-2 border-2" style={{borderColor: 'var(--primary)', background: 'var(--card-bg)'}}>
                   <img src={fileDataUrl} alt="preview" className="max-w-full max-h-full object-contain rounded image-rendering-pixelated" />
                 </div>
-                <p className="text-sm font-medium" style={{color: 'var(--text-primary)'}}>{fileName}</p>
+                <p className="text-sm font-medium" style={{color: '#1a1a1a'}}>{fileName}</p>
                 <button
                   type="button"
                   onClick={() => fileRef.current?.click()}
@@ -272,7 +280,7 @@ const SubmissionForm = () => {
                     <path d="M7 16a4 4 0 0 1-.88-7.903A5 5 0 1 1 15.9 6L16 6a5 5 0 0 1 1 9.9M15 13l-3-3m0 0l-3 3m3-3v12" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </div>
-                <p className="font-medium" style={{color: 'var(--text-primary)'}}>
+                <p className="font-medium" style={{color: '#dddbdbff'}}>
                   Drag & drop your pixel art here, or{' '}
                   <button
                     type="button"
@@ -283,34 +291,12 @@ const SubmissionForm = () => {
                     browse files
                   </button>
                 </p>
-                <p className="text-xs" style={{color: 'var(--text-secondary)'}}>Accepts PNG, JPG, JPEG and other image formats</p>
+                <p className="text-xs" style={{color: '#d6d6d6ff'}}>Accepts PNG, JPG, JPEG and other image formats</p>
               </div>
             )}
           </div>
           <input ref={fileRef} accept="image/*" type="file" onChange={onFileChange} className="hidden" />
         </div>
-
-        {/* Optional Google Apps Script */}
-        <details className="form-section">
-          <summary className="text-sm font-medium cursor-pointer flex items-center gap-2" style={{color: 'var(--text-secondary)'}}>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            Advanced: Google Apps Script URL (optional)
-          </summary>
-          <div className="mt-4">
-            <input
-              value={appsScriptUrl}
-              onChange={(e) => setAppsScriptUrl(e.target.value)}
-              placeholder="https://script.google.com/macros/s/XXX/exec"
-              className="input-field w-full text-sm"
-            />
-            <p className="text-xs mt-2" style={{color: 'var(--text-secondary)'}}>
-              Deploy the provided Google Apps Script to automatically save submissions to Google Sheets.
-            </p>
-          </div>
-        </details>
 
         {/* Submit Buttons */}
         <div className="flex flex-wrap gap-4 items-center pt-6" style={{borderTop: '1px solid var(--border-color)'}}>

@@ -47,7 +47,7 @@ export default function Navigation() {
     const isActive = activeSection === section
     return {
       background: isActive ? 'linear-gradient(135deg, var(--primary), var(--secondary))' : 'transparent',
-      color: isActive ? '#000' : 'var(--text-secondary)',
+      color: isActive ? '#ffffff' : 'var(--text-secondary)',
       border: isActive ? 'none' : '1px solid transparent',
       transform: isActive ? 'scale(1.05)' : 'scale(1)',
       boxShadow: isActive ? '0 4px 15px rgba(255, 152, 0, 0.4)' : 'none'
@@ -56,9 +56,10 @@ export default function Navigation() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 body-text transition-all duration-300" style={{
-      background: 'rgba(10, 10, 10, 0.7)',
+      background: 'rgba(255, 255, 255, 0.95)',
       backdropFilter: 'blur(20px)',
-      borderBottom: '1px solid rgba(255, 152, 0, 0.2)'
+      borderBottom: '2px solid rgba(255, 152, 0, 0.3)',
+      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)'
     }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-3 sm:py-4">
         <div className="flex items-center justify-between">
@@ -107,9 +108,9 @@ export default function Navigation() {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden p-2 rounded-lg"
             style={{
-              background: 'var(--dark-bg)',
+              background: 'rgba(248, 248, 248, 0.8)',
               color: 'var(--text-primary)',
-              border: '1px solid var(--border-color)'
+              border: '2px solid var(--border-color)'
             }}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -130,7 +131,7 @@ export default function Navigation() {
               className="tech-title w-full px-4 py-3 text-sm rounded-lg transition-all duration-300 text-left"
               style={{
                 ...getButtonStyle('home'),
-                border: activeSection === 'home' ? 'none' : '1px solid var(--border-color)'
+                border: activeSection === 'home' ? 'none' : '2px solid var(--border-color)'
               }}
             >
               HOME
@@ -140,8 +141,9 @@ export default function Navigation() {
               className="tech-title w-full px-4 py-3 text-sm rounded-lg transition-all duration-300 text-left hover:brightness-110"
               style={{
                 ...getButtonStyle('rules'),
-                background: activeSection === 'rules' ? 'linear-gradient(135deg, var(--primary), var(--secondary))' : 'rgba(255, 152, 0, 0.1)',
-                border: '1px solid var(--border-color)'
+                background: activeSection === 'rules' ? 'linear-gradient(135deg, var(--primary), var(--secondary))' : 'rgba(255, 152, 0, 0.05)',
+                border: '2px solid var(--border-color)',
+                color: activeSection === 'rules' ? '#ffffff' : 'var(--text-secondary)'
               }}
             >
               DETAILS
@@ -151,8 +153,9 @@ export default function Navigation() {
               className="tech-title w-full px-4 py-3 text-sm rounded-lg transition-all duration-300 text-left hover:brightness-110"
               style={{
                 ...getButtonStyle('submit'),
-                background: activeSection === 'submit' ? 'linear-gradient(135deg, var(--primary), var(--secondary))' : 'rgba(255, 152, 0, 0.1)',
-                border: '1px solid var(--border-color)'
+                background: activeSection === 'submit' ? 'linear-gradient(135deg, var(--primary), var(--secondary))' : 'rgba(255, 152, 0, 0.05)',
+                border: '2px solid var(--border-color)',
+                color: activeSection === 'submit' ? '#ffffff' : 'var(--text-secondary)'
               }}
             >
               SUBMIT
@@ -162,8 +165,9 @@ export default function Navigation() {
               className="tech-title w-full px-4 py-3 text-sm rounded-lg transition-all duration-300 text-left hover:brightness-110"
               style={{
                 ...getButtonStyle('organizer'),
-                background: activeSection === 'organizer' ? 'linear-gradient(135deg, var(--primary), var(--secondary))' : 'rgba(255, 152, 0, 0.1)',
-                border: '1px solid var(--border-color)'
+                background: activeSection === 'organizer' ? 'linear-gradient(135deg, var(--primary), var(--secondary))' : 'rgba(255, 152, 0, 0.05)',
+                border: '2px solid var(--border-color)',
+                color: activeSection === 'organizer' ? '#ffffff' : 'var(--text-secondary)'
               }}
             >
               ORGANIZER

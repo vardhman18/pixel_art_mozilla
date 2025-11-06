@@ -17,8 +17,8 @@ export default function Hero() {
           {/* Main Title */}
           <h1 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-6 sm:mb-8 animate-slide-up leading-tight" 
               style={{
-                color: 'var(--text-primary)',
-                textShadow: '0 0 20px rgba(255, 152, 0, 0.5)',
+                color: '#ffffff',
+                textShadow: '0 0 20px rgba(255, 152, 0, 0.8), 0 4px 10px rgba(0, 0, 0, 0.5)',
                 fontFamily: "'Press Start 2P', cursive",
                 lineHeight: '1.5'
               }}>
@@ -27,7 +27,7 @@ export default function Hero() {
           </h1>
 
           <p className="body-text text-sm sm:text-base md:text-lg lg:text-xl mb-8 sm:mb-12 animate-slide-up-delay-1 px-4" 
-             style={{color: 'var(--text-secondary)', fontWeight: 500}}>
+             style={{color: '#e0e0e0', fontWeight: 500}}>
             Transform Your Creativity Into Pixel Masterpieces.
           </p>
 
@@ -65,15 +65,15 @@ export default function Hero() {
       {/* Challenge Briefing */}
       <div className="relative mb-8 sm:mb-16 overflow-hidden rounded-2xl sm:rounded-3xl p-6 sm:p-8">
         <div className="relative px-4 sm:px-6 py-12 sm:py-16 md:py-24 text-center">
-          <h1 className="tech-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-4 sm:mb-6" style={{color: 'var(--text-primary)'}}>
+          <h1 className="tech-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-4 sm:mb-6" style={{color: '#ff9800'}}>
             CHALLENGE BRIEFING
           </h1>
 
-          <p className="body-text text-sm sm:text-base md:text-lg mb-4 sm:mb-6 max-w-3xl mx-auto px-2" style={{color: 'var(--text-secondary)', fontWeight: 500}}>
+          <p className="body-text text-sm sm:text-base md:text-lg mb-4 sm:mb-6 max-w-3xl mx-auto px-2" style={{color: '#cbc9c9ff', fontWeight: 500}}>
             The Pixel Art Challenge is a creative competition where artists and designers showcase their pixel art skills. We're calling all creators to craft amazing pixel art in three exciting categories.
           </p>
 
-          <p className="body-text text-sm sm:text-base md:text-lg mb-8 sm:mb-10 max-w-3xl mx-auto px-2" style={{color: 'var(--text-secondary)', fontWeight: 500}}>
+          <p className="body-text text-sm sm:text-base md:text-lg mb-8 sm:mb-10 max-w-3xl mx-auto px-2" style={{color: '#cbc9c9ff', fontWeight: 500}}>
             Choose your category: <span className="tech-title" style={{color: 'var(--primary)'}}>TRANSFORMERS</span>, <span className="tech-title" style={{color: 'var(--primary)'}}>CARS</span>, <span className="tech-title" style={{color: 'var(--primary)'}}>CREATIVE</span> etc. Show us your interpretation, your style, and your pixel perfect vision. Whether it's robots in disguise, racing machines, or your wildest imagination, make it count!
           </p>
 

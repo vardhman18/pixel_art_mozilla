@@ -27,12 +27,12 @@ const EventRules = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {rules.map((rule, index) => (
-          <div key={index} className="frame p-4 sm:p-5 group hover:scale-105 transition-all duration-300" style={{background: 'rgba(26, 26, 46, 0.5)'}}>
+          <div key={index} className="frame p-4 sm:p-5 group hover:scale-105 transition-all duration-300" style={{background: 'rgba(255, 255, 255, 0.8)'}}>
             <div className="flex items-start gap-3">
               <span className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-sm sm:text-base font-bold text-white group-hover:scale-110 transition-transform" style={{background: 'linear-gradient(135deg, var(--primary), var(--secondary))'}}>
                 {index + 1}
               </span>
-              <span className="leading-relaxed text-sm sm:text-base pt-1 sm:pt-2" style={{color: 'var(--text-secondary)'}}>{rule}</span>
+              <span className="leading-relaxed text-sm sm:text-base pt-1 sm:pt-2" style={{color: '#333333'}}>{rule}</span>
             </div>
           </div>
         ))}

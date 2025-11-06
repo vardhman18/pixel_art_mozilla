@@ -25,12 +25,12 @@ export default function App() {
           <section id="submit" className="mb-8 sm:mb-12 lg:mb-16">
             <SubmissionForm />
           </section>
-
-          <section id="organizer">
-            <Footer />
-          </section>
         </div>
       </div>
+      
+      <section id="organizer">
+        <Footer />
+      </section>
     </>
   )
 }

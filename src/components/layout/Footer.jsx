@@ -2,9 +2,13 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <footer className="w-full mt-16 -mx-6 sm:-mx-12 bg-gradient-to-b from-transparent to-black/30">
-      <div className="px-12 py-16">
-        <div className="max-w-7xl mx-auto">
+    <footer className="w-full mt-16" style={{
+      background: 'rgba(255, 255, 255, 0.95)',
+      backdropFilter: 'blur(20px)',
+      borderTop: '2px solid rgba(255, 152, 0, 0.3)',
+      boxShadow: '0 -4px 20px rgba(0, 0, 0, 0.05)'
+    }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-16">
           {/* Main Content */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Team Section */}
@@ -19,13 +23,13 @@ const Footer = () => {
               </div>
               <div className="body-text space-y-6">
                 <div>
-                  <p className="tech-title text-lg mb-3" style={{color: 'var(--primary)'}}>Organizers:</p>
-                  <p className="text-lg mb-2" style={{color: 'var(--text-primary)'}}>Yash Singhal</p>
-                  <p className="text-lg" style={{color: 'var(--text-primary)'}}>Kush Sharma</p>
+                  <p className="tech-title text-lg mb-4" style={{color: 'var(--primary)'}}>ORGANIZERS:</p>
+                  <p className="text-xl mb-3 font-semibold" style={{color: '#1a1a1a'}}>Yash Singhal</p>
+                  <p className="text-xl font-semibold" style={{color: '#1a1a1a'}}>Kush Sharma</p>
                 </div>
-                <div>
-                  <p className="tech-title text-lg mb-3" style={{color: 'var(--primary)'}}>Developer:</p>
-                  <p className="text-lg" style={{color: 'var(--text-primary)'}}>Vardhman Jain</p>
+                <div className="pt-4">
+                  <p className="tech-title text-lg mb-4" style={{color: 'var(--primary)'}}>DEVELOPER:</p>
+                  <p className="text-xl font-semibold" style={{color: '#1a1a1a'}}>Vardhman Jain</p>
                 </div>
               </div>
             </div>
@@ -41,7 +45,7 @@ const Footer = () => {
                 <h4 className="tech-title text-2xl" style={{color: 'var(--primary)'}}>JOIN THE COMMUNITY</h4>
               </div>
               <div className="mb-6">
-                <p className="tech-title text-lg" style={{color: 'var(--primary)'}}>Mozilla Phoenix Club</p>
+                <p className="tech-title text-xl font-bold" style={{color: '#1a1a1a'}}>Mozilla Phoenix Club</p>
               </div>
               <div className="flex flex-wrap justify-center lg:justify-start gap-4">
                 <a
@@ -79,7 +83,6 @@ const Footer = () => {
               </div>
             </div>
           </div>
-        </div>
       </div>
     </footer>
   )

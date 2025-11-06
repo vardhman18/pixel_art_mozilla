@@ -81,7 +81,7 @@ const HowToParticipate = () => {
               How to Participate
             </h2>
           </div>
-          <p style={{color: 'var(--text-secondary)'}}>Follow these steps to join the challenge</p>
+          <p style={{color: '#666666'}}>Follow these steps to join the challenge</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -104,7 +104,7 @@ const HowToParticipate = () => {
                       {step.title}
                     </h3>
                   </div>
-                  <p className="text-sm leading-relaxed" style={{color: 'var(--text-secondary)'}}>
+                  <p className="text-sm leading-relaxed" style={{color: '#333333'}}>
                     {step.description}
                   </p>
                 </div>
