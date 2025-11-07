@@ -45,8 +45,8 @@ const steps = [
   },
   {
     id: 5,
-    title: 'Submit Here',
-    description: 'Fill the form below with team details and upload your downloaded artwork.',
+    title: 'Submit via Google Form',
+    description: 'Click the Submit button below to open Google Form. Use your college email and upload your artwork.',
     icon: (
       <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -55,8 +55,8 @@ const steps = [
   },
   {
     id: 6,
-    title: 'Deadline',
-    description: 'Submit by Nov 15, 2025. Winners announced Nov 20!',
+    title: 'Event Timeline',
+    description: 'Submissions open now! Event runs until Dec 15, 2025. Winners announced Dec 20!',
     icon: (
       <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <rect x="3" y="4" width="18" height="18" rx="2" ry="2" strokeWidth="2"/>
@@ -81,7 +81,7 @@ const HowToParticipate = () => {
               How to Participate
             </h2>
           </div>
-          <p style={{color: '#666666'}}>Follow these steps to join the challenge</p>
+          <p style={{color: '#d1d1d1ff'}}>Follow these steps to join the challenge</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
